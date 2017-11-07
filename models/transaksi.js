@@ -5,12 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     idBarang: DataTypes.INTEGER,
     jumlah: DataTypes.INTEGER,
     totalHarga: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  Transaksi.associate = models => {
+    Transaksi.hasMany(models.Barang)
+  }
   return Transaksi;
 };

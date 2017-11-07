@@ -4,12 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     nama: DataTypes.STRING,
     stok: DataTypes.INTEGER,
     harga: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  
   return Barang;
 };
