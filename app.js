@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(express.static("views"))
 
 app.get('/', function (req, res) {
-  res.render('editprofile');
+  res.render('baranguser');
 })
 app.listen(3000, function () {
   console.log('IT WORKS!');

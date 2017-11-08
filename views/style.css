@@ -108,11 +108,21 @@ a.button:hover{
 .container{
     background-color: white;
     background-position: center;
-    padding-top: 30px;
-    margin-top: 90px
 }
 
 
 .edit{
-  float: right; 
+  float: right;
+}
+
+.nama_barang{
+  padding: : 20px 15px 20px 15px;
+  float: left;
+  font-family: arial;
+  font-style: oblique;
+  color: #404040;
+}
+
+.alamat_user{
+  float:right;
 }
