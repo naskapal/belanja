@@ -3,7 +3,15 @@ const bcrypt = require('bcrypt');
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
     username: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.NOW
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.NOW
+    }
   });
   User.associate = models => {
     User.hasOne(models.Profil)

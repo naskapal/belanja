@@ -11,7 +11,15 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true
       }
     },
-    username: DataTypes.STRING
+    username: DataTypes.STRING,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.NOW
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.NOW
+    }
   });
   Profil.associate = models => {
     Profil.belongsTo(models.User)
