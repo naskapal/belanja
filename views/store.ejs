@@ -3,14 +3,17 @@
 
 <div id="columns" class="columns_5">
   
-  <%items.map(item => { %>
-    <figure>
-    <img src="https://i.imgur.com/ruU04I6.jpg">
-  	<figcaption><%=item.nama%></figcaption>
+  
+  <%if (items !== null) { %>
+    <%items.map(item => { %>
+      <figure>
+      <img src="https://i.imgur.com/ruU04I6.jpg">
+      <figcaption><%=item.nama%></figcaption>
       <span class="price"><%=item.price%></span>
       <a class="button" href="/items/purchase/<%=item.id%>">Buy Now</a>
-  	</figure>
-  <%})%>
+      </figure>
+      <%})%>
+  <%}%>
 
 </div>
 

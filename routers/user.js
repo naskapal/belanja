@@ -4,7 +4,7 @@ const db = require('../models');
 const bcrypt = require('bcrypt');
 
 router.get('/register', (req, res) => {
-  res.render('register')
+  res.render('register', {msg : null})
 })
 
 router.post('/register', (req, res) => {
@@ -18,12 +18,8 @@ router.post('/register', (req, res) => {
   })
   .catch(function(err){
     console.log(err);
-    res.render('register')
+    res.render('register', {msg : err})
   })
-})
-
-router.get('/login', (req, res) => {
-  res.render('login')
 })
 
 router.post('/login', function(req, res){
@@ -35,8 +31,9 @@ router.post('/login', function(req, res){
     if(user){
       bcrypt.compare(req.body.password, user.password).then(function(result) {
         if (result) {
-          // req.session.loggedIn = true
-          // req.session.username = user.username
+          req.session.loggedIn = true
+          req.session.username = user.username
+          req.session.userId = user.id
           res.redirect('/items')
         }else{
           res.render('login')
