@@ -108,11 +108,11 @@ a.button:hover{
 .container{
     background-color: white;
     background-position: center;
-    padding-top: 30px;
-    margin-top: 90px
+    /*padding-top: 30px;*/
+    /*margin-top: 90px*/
 }
 
 
 .edit{
-  float: right; 
+  float: right;
 }

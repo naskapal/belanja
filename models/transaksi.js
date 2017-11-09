@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   Transaksi.associate = models => {
-    Transaksi.hasMany(models.Barang)
+    Transaksi.belongsTo(models.Barang, {foreignKey : 'idBarang'})
+    Transaksi.belongsTo(models.User, {foreignKey : 'username'})
   }
   return Transaksi;
 };

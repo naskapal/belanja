@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: {
       type: DataTypes.DATE,
       defaultValue: sequelize.NOW
-    }
+    },
+    email: DataTypes.STRING
   });
   User.associate = models => {
     User.hasOne(models.Profil)

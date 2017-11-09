@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const db = require('../models');
 const bcrypt = require('bcrypt');
 
@@ -10,10 +10,11 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
   db.User.create({
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    email: req.body.email
   })
   .then(function(result){
-    res.redirect('/users/login')
+    res.redirect('/items')
   })
   .catch(function(err){
     console.log(err);
@@ -36,7 +37,7 @@ router.post('/login', function(req, res){
         if (result) {
           // req.session.loggedIn = true
           // req.session.username = user.username
-          res.send('berhasil login')
+          res.redirect('/items')
         }else{
           res.render('login')
         }
