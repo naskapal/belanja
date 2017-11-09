@@ -6,12 +6,23 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
     telp: DataTypes.STRING,
     email: {
-      DataTypes.STRING,
+      type: DataTypes.STRING,
       validate : {
         isEmail: true
       }
     },
-    username: DataTypes.STRING
+    username: DataTypes.STRING,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.NOW
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.NOW
+    }
   });
+  Profil.associate = models => {
+    Profil.belongsTo(models.User)
+  }
   return Profil;
 };

@@ -13,6 +13,7 @@ app.use(express.static("views"))
 app.get('/', function (req, res) {
   res.render('editprofile');
 })
+
 app.listen(3000, function () {
   console.log('IT WORKS!');
 })

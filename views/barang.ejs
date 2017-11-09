@@ -1,20 +1,22 @@
 <%- include('./partials/head')%>
+<%- include('./partials/header')%>
 <div class="container">
   <div class="edit">
-    <a href="edit">edit</a>
+    <a href="/items/edit/<%=item.id%>">edit</a>
     <a href="delete">delete</a>
   </div>
   <div class="row">
-        <div class="col col-md-2">
+        <div class="col-md-2">
           <img src="https://image.flaticon.com/icons/svg/134/134349.svg"  width="150" height="150">
 
         </div>
-        <div class="col col-md-3">
-          ceritanya id barang   :<%= %> <br>
-          ceritanya id toko     :<%= %> <br>
-          ceritanya nama barang :<%= %> <br>
-          ceritanya harga       :<%= %> <br>
-          ceritanya no.telp toko:<%= %> <br>
+        <div class="col-md-3">
+          nama barang :<%=item.nama%> <br>
+          harga       :<%=item.harga%> <br>
+        </div>
+        
+        <div class="col-md-7">
+          <a href="/transaksi/<%=item.id%>"><button type="button" class="btn btn-primary" name="button">Beli</button></a>
         </div>
   </div>
 </div>
