@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
   Profil.associate = models => {
-    Profil.belongsTo(models.User)
+    Profil.belongsTo(models.User, {foreignKey: 'username', targetKey: 'username'})
   }
   return Profil;
 };

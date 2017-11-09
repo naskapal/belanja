@@ -34,15 +34,33 @@ router.post('/login', function(req, res){
           req.session.loggedIn = true
           req.session.username = user.username
           req.session.userId = user.id
-          res.redirect('/items')
-        }else{
-          res.render('login')
+          req.session.email  = user.email
+          db.Profil.findOne({
+            where: {
+              username: req.body.username
+            }
+          })
+          .then(result => {
+            if (result != null) {
+              res.redirect('/items')
+            }
+            else {
+              res.redirect('/profiles/create')
+            }
+          })
         }
       })
-    }else{
-      res.render('login')
+    }
+    else {
+      res.redirect('/items')
     }
   })
+})
+
+router.get('/logout', (req, res) => {
+  req.session = null
+  console.log(`================================ ${req.session}`);
+  res.redirect('/items')
 })
 
 module.exports = router;

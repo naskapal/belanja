@@ -1,18 +1,46 @@
 <%- include('./partials/head')%>
+<%- include('./partials/header')%>
 
-  <div class="container">
-    <form class="" action="halaman_profile" method="post" align ="center">
-      <table>
-        <tr><input type="text" name="edit_nama" value="nama yang akan diedit"></tr>
-        <tr><input type="text" name="edit_alamat" value="alamat yang akan diedit"></tr>
-        <tr><input type="text" name="edit_notelp" value="no_telp yang akan diedit"></tr>
-        <tr><select class="" name="edit_gender">
-          <option value="--select--">--SELECT--</option>
-          <option value="male">MALE</option>
-          <option value="female">FEMALE</option>
-        </select></tr>
+  <%if (profileData === null) { %>
+    <div class="container">
+    <form class="" action="/profiles/create" method="post" align ="center">
+    <table>
+    
+    <tr><input type="text" name="nama" placeholder="nama"></tr>
+    <tr><input type="text" name="alamat" placeholder="alamat"></tr>
+    <tr><input type="number" name="telp" placeholder="no_telp"></tr>
+    <tr><select name="gender">
+    <option value="--select--">--SELECT--</option>
+    <option value="L">Pria</option>
+    <option value="P">Wanita</option>
+    </select></tr>
+    
+  <%}
+  else { %>
+    <div class="container">
+    <form class="" action="/profiles/edit" method="post" align ="center">
+    <table>
+    <tr><input type="text" name="nama" value="<%=profileData.nama%>"></tr>
+    <tr><input type="text" name="alamat" value="<%=profileData.alamat%>"></tr>
+    <tr><input type="number" name="telp" value="<%=profileData.telp%>"></tr>
+    <tr><select name="gender">
+    <option value="--select--">--SELECT--</option>
+    <%if (profileData.gender === "L") { %>
+      <option value="L" selected>Pria</option>
+      <option value="P">Wanita</option>
+    <%}
+    else { %>
+      <option value="--select--">--SELECT--</option>
+      <option value="L">Pria</option>
+      <option value="P" selected>Wanita</option>
+    <%}%>
+    </select></tr>
+  <%}%>
+  <tr>
+    <td><input type="submit"></td>
+  </tr>
     </table>
-    </form>
-  </div>
+  </form>
+</div>
 
 <%- include('./partials/footer')%>

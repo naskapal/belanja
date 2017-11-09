@@ -3,6 +3,7 @@ const router = express.Router()
 const db = require('../models');
 
 router.get('/', (req, res) => {
+  console.log(req.session);
   db.Barang.findAll()
   .then(items => {
     res.render('store', {items})
@@ -41,7 +42,7 @@ router.post('/edit/:id', (req, res) => {
   .then(item => {
     item.update(req.body)
     .then(success => {
-      res.redirect(`/items/${id}`)
+      res.redirect(`/items/`)
     })
   })
   .catch(error => {
@@ -55,8 +56,22 @@ router.post('/add', (req, res) => {
     res.redirect('/items')
   })
   .catch(error => {
-    console.log(err);
+    console.log(error);
     res.render('items')
+  })
+})
+
+router.get('/delete/:id', (req, res) => {
+  db.Barang.findById(req.params.id)
+  .then(item => {
+    item.destroy()
+    .then(success => {
+      res.redirect('/items')
+    })
+  })
+  .catch(error => {
+    console.log(error);
+    res.redirect('/items')
   })
 })
 

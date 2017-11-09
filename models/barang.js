@@ -2,7 +2,12 @@
 module.exports = (sequelize, DataTypes) => {
   var Barang = sequelize.define('Barang', {
     nama: DataTypes.STRING,
-    stok: DataTypes.INTEGER,
+    stok: {
+      type: DataTypes.INTEGER,
+      validate : {
+        min: 0
+      }
+    },
     harga: DataTypes.INTEGER,
     createdAt: {
       type: DataTypes.DATE,

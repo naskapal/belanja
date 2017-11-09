@@ -1,8 +1,6 @@
 <%- include('./partials/head')%>
 <%- include('./partials/header')%>
 
-<%# NANTI DISINI DIKASIH username user %>
-
 <div class="container">
   <div class="row">
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -10,9 +8,9 @@
     </div>
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <form action="/transaksi/confirm" method="post">
-        <input type="hidden" name="username" value="fabio">
-        <input type="hidden" name="idBarang" value="<%=idbarang%>">
-        <input type="text" name="jumlah" value="2">
+        <input type="hidden" name="username" value="<%loggedIn.username%>">
+        <input type="hidden" name="idBarang" value="<%=barang.id%>">
+        <input type="text" name="jumlah">
         <input type="submit" class="btn btn-primary" value="Beli">
       </form>
     </div>
